@@ -1,3 +1,6 @@
-= Popfly
+= popfly
 
-This project rocks and uses MIT-LICENSE.
+Add popfly to your Gemfile, point your browser at /popfly.
+
+A working app returns 200, with a message of 'OK'.
+Apps in distress return 503.
