@@ -13,6 +13,7 @@ module Popfly
           end
         else
           # This is likely unreachable. -RJ
+          Rails.logger.error('No connection')
           return send_status('No DB connection.')
         end
       rescue => e
