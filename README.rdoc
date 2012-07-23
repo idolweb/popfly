@@ -1,6 +1,12 @@
-= popfly
+=== popfly
 
-Add popfly to your Gemfile, point your browser at /popfly.
+Add popfly to your app, point your browser at /popfly.
 
 A working app returns 200, with a message of 'OK'.
 Apps in distress return 503.
+
+---
+= Installation
+
+1. Add popfly to your Gemfile; bundle install.
+2. Add to your app's routes: <tt>mount Popfly::Engine => '/popfly'</tt>
