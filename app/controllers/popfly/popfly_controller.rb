@@ -8,11 +8,6 @@ module Popfly
         if conn = ActiveRecord::Base.connection
           ActiveRecord::Base.uncached do
             conn.execute('select 1')
-
-            if tables = conn.tables and tables.blank?
-              no_tables = 'No tables defined in DB. Run your migrations!'
-              return send_status(no_tables)
-            end
           end
         else
           # This is likely unreachable. -RJ
