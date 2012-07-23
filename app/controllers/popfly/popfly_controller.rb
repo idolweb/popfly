@@ -6,9 +6,13 @@ module Popfly
     def index
       begin
         if conn = ActiveRecord::Base.connection
-          if tables = conn.tables and tables.blank?
-            no_tables = 'No tables defined in DB. Run your migrations!'
-            return send_status(no_tables)
+          ActiveRecord::Base.uncached do
+            conn.execute('select 1')
+
+            if tables = conn.tables and tables.blank?
+              no_tables = 'No tables defined in DB. Run your migrations!'
+              return send_status(no_tables)
+            end
           end
         else
           # This is likely unreachable. -RJ
@@ -24,7 +28,7 @@ module Popfly
     private
 
     def send_status(message = 'Application unavailable.', status = :service_unavailable)
-      Rails.logger.fatal("#{message}")
+      Rails.logger.fatal("#{message}") unless status == :ok
       render text: message, layout: false, status: status
     end
 
