@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    popfly (0.1.0)
+    popfly (0.2.0)
       rails (~> 3.0)
 
 GEM
@@ -89,5 +89,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  jdbc-sqlite3
   popfly!
+  rake
   sqlite3
