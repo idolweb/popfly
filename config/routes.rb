@@ -1,3 +1,3 @@
 Popfly::Engine.routes.draw do
-  root :to => 'popfly#index'
+  root 'popfly#index'
 end
