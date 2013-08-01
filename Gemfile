@@ -20,6 +20,6 @@ gem 'sqlite3'
 gem 'mysql2'
 gem 'pg'
 
-group :test do
+# group :test do
   gem "rake"
-end
+# end
