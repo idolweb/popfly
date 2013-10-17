@@ -5,18 +5,14 @@ module Popfly
 
     def index
       begin
-        if conn = ActiveRecord::Base.connection
-          ActiveRecord::Base.uncached do
-            conn.execute('select 1')
-          end
+        if ActiveRecord::Base.connection.active?
+          send_status('OK', :ok)
         else
-          # This is likely unreachable. -RJ
-          return send_status('No DB connection.')
+          send_status('No DB connection.')
         end
       rescue => e
-        return send_status
+        send_status
       end
-      return send_status('OK', :ok)
     end
 
     #------
